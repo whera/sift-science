@@ -1,0 +1,39 @@
+{
+    "name": "wsw/sift-science",
+    "description": "PHP client Sift Science",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ronaldo M. Rodrigues",
+            "email": "ronaldo@whera.com.br"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.6",
+        "wsw/money": "^1.0"
+    },
+    "require-dev": {
+        "rdehnhardt/var-dumper": "^1.1",
+        "phpunit/phpunit": "^5.7",
+        "squizlabs/php_codesniffer": "^3.0",
+        "sebastian/phpcpd": "^3.0",
+        "fzaninotto/faker": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "WSW\\SiftScience\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WSW\\SiftScience\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "check-style": "vendor/bin/phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
+        "fix-style": "vendor/bin/phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src"
+    }
+}
