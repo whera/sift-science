@@ -75,4 +75,14 @@ class CredentialsTest extends TestCase
 
         $this->assertEquals('https://ws.test.com/test?page=1', $credentials->getWsUrl('/test', ['page' => '1']));
     }
+
+    /**
+     * @test
+     */
+    public function getWsUrlShouldGetTheWsUrlFromTheEnvironment()
+    {
+        $credentials = new Credentials('1234567890123654', $this->environment);
+
+        $this->assertEquals('https://ws.test.com/test/page/1', $credentials->getWsUrl('/test/page/1'));
+    }
 }
