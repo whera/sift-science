@@ -12,7 +12,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.6",
-        "wsw/money": "^1.0"
+        "wsw/money": "^1.0",
+        "doctrine/collections": "^1.4"
     },
     "require-dev": {
         "rdehnhardt/var-dumper": "^1.1",
