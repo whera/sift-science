@@ -105,7 +105,7 @@ class PaymentMethod
      * @param string $paymentType
      * @throws \InvalidArgumentException
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setPaymentType($paymentType)
     {
@@ -130,7 +130,7 @@ class PaymentMethod
      * @param string $paymentGateway
      * @throws \InvalidArgumentException
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setPaymentGateway($paymentGateway)
     {
@@ -154,7 +154,7 @@ class PaymentMethod
     /**
      * @param string $cardBin
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setCardBin($cardBin)
     {
@@ -174,7 +174,7 @@ class PaymentMethod
     /**
      * @param string $cardLast4
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setCardLast4($cardLast4)
     {
@@ -194,7 +194,7 @@ class PaymentMethod
     /**
      * @param string $cvvResultCode
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setCvvResultCode($cvvResultCode)
     {
@@ -214,7 +214,7 @@ class PaymentMethod
     /**
      * @param string $avsResultCode
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setAvsResultCode($avsResultCode)
     {
@@ -234,7 +234,7 @@ class PaymentMethod
     /**
      * @param string $verificationStatus
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setVerificationStatus($verificationStatus)
     {
@@ -258,7 +258,7 @@ class PaymentMethod
     /**
      * @param string $routingNumber
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setRoutingNumber($routingNumber)
     {
@@ -278,7 +278,7 @@ class PaymentMethod
     /**
      * @param string $declineReasonCode
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setDeclineReasonCode($declineReasonCode)
     {
@@ -298,7 +298,7 @@ class PaymentMethod
     /**
      * @param string $stripeCvcCheck
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setStripeCvcCheck($stripeCvcCheck)
     {
@@ -318,7 +318,7 @@ class PaymentMethod
     /**
      * @param string $stripeFunding
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setStripeFunding($stripeFunding)
     {
@@ -338,7 +338,7 @@ class PaymentMethod
     /**
      * @param string $stripeBrand
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setStripeBrand($stripeBrand)
     {
@@ -358,7 +358,7 @@ class PaymentMethod
     /**
      * @param string $stripeAddressLine1Check
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setStripeAddressLine1Check($stripeAddressLine1Check)
     {
@@ -378,7 +378,7 @@ class PaymentMethod
     /**
      * @param string $stripeAddressLine2Check
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setStripeAddressLine2Check($stripeAddressLine2Check)
     {
@@ -398,7 +398,7 @@ class PaymentMethod
     /**
      * @param string $stripeAddressZipCheck
      *
-     * @return PaymentMethod
+     * @return $this
      */
     public function setStripeAddressZipCheck($stripeAddressZipCheck)
     {

@@ -54,7 +54,7 @@ trait PayPalPaymentMethodTrait
     /**
      * @param string $paypalPayerId
      *
-     * @return PayPalPaymentMethodTrait
+     * @return $this
      */
     public function setPaypalPayerId($paypalPayerId)
     {
@@ -74,7 +74,7 @@ trait PayPalPaymentMethodTrait
     /**
      * @param Email $paypalPayerEmail
      *
-     * @return PayPalPaymentMethodTrait
+     * @return $this
      */
     public function setPaypalPayerEmail(Email $paypalPayerEmail)
     {
@@ -94,7 +94,7 @@ trait PayPalPaymentMethodTrait
     /**
      * @param string $paypalPayerStatus
      *
-     * @return PayPalPaymentMethodTrait
+     * @return $this
      */
     public function setPaypalPayerStatus($paypalPayerStatus)
     {
@@ -114,7 +114,7 @@ trait PayPalPaymentMethodTrait
     /**
      * @param string $paypalAddressStatus
      *
-     * @return PayPalPaymentMethodTrait
+     * @return $this
      */
     public function setPaypalAddressStatus($paypalAddressStatus)
     {
@@ -134,7 +134,7 @@ trait PayPalPaymentMethodTrait
     /**
      * @param string $paypalProtectionEligibility
      *
-     * @return PayPalPaymentMethodTrait
+     * @return $this
      */
     public function setPaypalProtectionEligibility($paypalProtectionEligibility)
     {
@@ -154,7 +154,7 @@ trait PayPalPaymentMethodTrait
     /**
      * @param string $paypalPaymentStatus
      *
-     * @return PayPalPaymentMethodTrait
+     * @return $this
      */
     public function setPaypalPaymentStatus($paypalPaymentStatus)
     {
