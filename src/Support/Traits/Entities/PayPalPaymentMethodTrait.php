@@ -3,6 +3,7 @@
 namespace WSW\SiftScience\Support\Traits\Entities;
 
 use InvalidArgumentException;
+use WSW\Email\Email;
 
 /**
  * Trait PayPalPaymentMethodTrait
@@ -18,7 +19,7 @@ trait PayPalPaymentMethodTrait
     private $paypalPayerId;
 
     /**
-     * @var string
+     * @var Email
      */
     private $paypalPayerEmail;
 
@@ -63,7 +64,7 @@ trait PayPalPaymentMethodTrait
     }
 
     /**
-     * @return string
+     * @return Email
      */
     public function getPaypalPayerEmail()
     {
@@ -71,16 +72,12 @@ trait PayPalPaymentMethodTrait
     }
 
     /**
-     * @param string $paypalPayerEmail
+     * @param Email $paypalPayerEmail
      *
      * @return PayPalPaymentMethodTrait
      */
-    public function setPaypalPayerEmail($paypalPayerEmail)
+    public function setPaypalPayerEmail(Email $paypalPayerEmail)
     {
-        if (!filter_var($paypalPayerEmail, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumentException('You should inform a valid email');
-        }
-
         $this->paypalPayerEmail = $paypalPayerEmail;
 
         return $this;
