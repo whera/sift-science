@@ -57,4 +57,20 @@ class Credentials
 
         return sprintf('%s?%s', $this->environment->getWsUrl($resource), http_build_query($params));
     }
+
+    /**
+     * @return Environment
+     */
+    public function getEnvironment()
+    {
+        return $this->environment;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
 }
