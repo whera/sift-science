@@ -75,4 +75,15 @@ class ItemTest extends TestCase
         $this->assertEquals("Texas Tea", $item->getColor());
         $this->assertEquals(6, $item->getQuantity());
     }
+
+    /**
+     * @test
+     */
+    public function methodTotalAmount()
+    {
+        $item = $this->instanceItem();
+        $this->assertInstanceOf(Money::class, $item->getTotalAmount());
+        $this->assertEquals('239.940000', $item->getTotalAmount()->getAmount());
+        $this->assertEquals('239,94', $item->getTotalAmount()->__toString());
+    }
 }

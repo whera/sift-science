@@ -3,6 +3,7 @@
 namespace WSW\SiftScience\Entities;
 
 use WSW\Money\Money;
+use WSW\SiftScience\Services\ItemTotalValue;
 
 /**
  * Class Item
@@ -284,5 +285,13 @@ class Item
         $this->quantity = (int) $quantity;
 
         return $this;
+    }
+
+    /**
+     * @return Money
+     */
+    public function getTotalAmount()
+    {
+        return (new ItemTotalValue($this))->execute();
     }
 }
