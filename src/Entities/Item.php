@@ -3,7 +3,6 @@
 namespace WSW\SiftScience\Entities;
 
 use WSW\Money\Money;
-use WSW\SiftScience\Services\ItemTotalValue;
 
 /**
  * Class Item
@@ -292,6 +291,8 @@ class Item
      */
     public function getTotalAmount()
     {
-        return (new ItemTotalValue($this))->execute();
+        $newAmount = bcmul($this->getPrice()->getAmount(), $this->getQuantity(), Money::SCALE);
+
+        return $this->getPrice()->newInstance($newAmount);
     }
 }
