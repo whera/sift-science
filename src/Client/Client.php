@@ -34,8 +34,6 @@ class Client
     {
         $this->client = $client ?: new HttpClient();
         $this->headers = new Headers();
-        $this->addHeader('Content-Type', 'application/json');
-        $this->addHeader('Accept', 'application/json');
     }
 
     /**

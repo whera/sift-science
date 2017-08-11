@@ -85,4 +85,22 @@ class CredentialsTest extends TestCase
 
         $this->assertEquals('https://ws.test.com/test/page/1', $credentials->getWsUrl('/test/page/1'));
     }
+
+    /**
+     * @test
+     */
+    public function checkMehtodGetEnvironment()
+    {
+        $credentials = new Credentials('1234567890123654');
+        $this->assertInstanceOf(Production::class, $credentials->getEnvironment());
+    }
+
+    /**
+     * @test
+     */
+    public function checkMehtodGetApiKey()
+    {
+        $credentials = new Credentials('1234567890123654');
+        $this->assertEquals('1234567890123654', $credentials->getApiKey());
+    }
 }

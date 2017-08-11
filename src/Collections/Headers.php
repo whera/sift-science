@@ -12,4 +12,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Headers extends ArrayCollection
 {
+    public function __construct()
+    {
+        parent::__construct([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+        ]);
+    }
 }
