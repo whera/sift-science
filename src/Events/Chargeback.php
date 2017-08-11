@@ -34,6 +34,9 @@ class Chargeback extends BaseEvent
      */
     private $chargebackReason;
 
+    /**
+     * Chargeback constructor.
+     */
     public function __construct()
     {
         $this->type = '$chargeback';

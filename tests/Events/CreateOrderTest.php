@@ -77,7 +77,7 @@ class CreateOrderTest extends TestCase
             ->setDescription('$5 off');
 
         $event = (new CreateOrder())
-            ->setSession('gigtleqddo84l8cm15qe4il')
+            ->setSessionId('gigtleqddo84l8cm15qe4il')
             ->setOrder('ORDER-28168441')
             ->setUserEmail(new Email('ronaldo@whera.com.br'))
             ->setAmount(new Money(115.94, new Currency('USD')))
@@ -97,7 +97,7 @@ class CreateOrderTest extends TestCase
     {
         $event = $this->instanceOrder();
 
-        $this->assertEquals('gigtleqddo84l8cm15qe4il', $event->getSession());
+        $this->assertEquals('gigtleqddo84l8cm15qe4il', $event->getSessionId());
         $this->assertEquals('ORDER-28168441', $event->getOrder());
         $this->assertInstanceOf(Email::class, $event->getUserEmail());
         $this->assertInstanceOf(Money::class, $event->getAmount());

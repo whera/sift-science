@@ -22,10 +22,6 @@ use WSW\SiftScience\Support\AllowedValues\ShippingMethod;
  */
 abstract class AbstractOrder extends BaseEvent
 {
-    /**
-     * @var string
-     */
-    private $session;
 
     /**
      * @var string
@@ -91,26 +87,6 @@ abstract class AbstractOrder extends BaseEvent
         $this->items = new Items();
         $this->paymentMethods = new PaymentMethods();
         $this->promotions = new Promotions();
-    }
-
-    /**
-     * @return string
-     */
-    public function getSession()
-    {
-        return $this->session;
-    }
-
-    /**
-     * @param string $session
-     *
-     * @return $this
-     */
-    public function setSession($session)
-    {
-        $this->session = $session;
-
-        return $this;
     }
 
     /**

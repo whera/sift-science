@@ -66,11 +66,6 @@ class Transaction extends BaseEvent
     /**
      * @var string
      */
-    private $sessionId;
-
-    /**
-     * @var string
-     */
     private $sellerUserId;
 
     /**
@@ -270,26 +265,6 @@ class Transaction extends BaseEvent
     public function setPaymentMethod(PaymentMethod $paymentMethod)
     {
         $this->paymentMethod = $paymentMethod;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSessionId()
-    {
-        return $this->sessionId;
-    }
-
-    /**
-     * @param string $sessionId
-     *
-     * @return $this
-     */
-    public function setSessionId($sessionId)
-    {
-        $this->sessionId = $sessionId;
 
         return $this;
     }
