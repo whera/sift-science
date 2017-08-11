@@ -1,13 +1,14 @@
 <?php
 
-namespace WSW\SiftScience\Transformers;
+namespace WSW\SiftScience\Transformers\Entities;
 
 use WSW\SiftScience\Entities\Address;
+use WSW\SiftScience\Transformers\AbstractTransformer;
 
 /**
  * Class AddressTransformer
  *
- * @package WSW\SiftScience\Transformers
+ * @package WSW\SiftScience\Transformers\Entities
  * @author Ronaldo Matos Rodrigues <ronaldo@whera.com.br>
  */
 class AddressTransformer extends AbstractTransformer

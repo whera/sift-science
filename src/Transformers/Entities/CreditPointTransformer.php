@@ -1,13 +1,14 @@
 <?php
 
-namespace WSW\SiftScience\Transformers;
+namespace WSW\SiftScience\Transformers\Entities;
 
 use WSW\SiftScience\Entities\CreditPoint;
+use WSW\SiftScience\Transformers\AbstractTransformer;
 
 /**
  * Class CreditPointTransformer
  *
- * @package WSW\SiftScience\Transformers
+ * @package WSW\SiftScience\Transformers\Entities
  * @author Ronaldo Matos Rodrigues <ronaldo@whera.com.br>
  */
 class CreditPointTransformer extends AbstractTransformer

@@ -3,15 +3,15 @@
 namespace WSW\SiftScience\Events;
 
 /**
- * Class CreateOrder
+ * Class UpdateOrder
  *
  * @package WSW\SiftScience\Events
  * @author Ronaldo Matos Rodrigues <ronaldo@whera.com.br>
  */
-class CreateOrder extends AbstractOrder
+class UpdateOrder extends AbstractOrder
 {
     public function __construct()
     {
-        parent::__construct('$create_order');
+        parent::__construct('$update_order');
     }
 }

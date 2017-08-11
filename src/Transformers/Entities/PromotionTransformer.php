@@ -1,19 +1,21 @@
 <?php
 
-namespace WSW\SiftScience\Transformers;
+namespace WSW\SiftScience\Transformers\Entities;
 
-use WSW\SiftScience\Entities\CreditPoint;
-use WSW\SiftScience\Entities\Discount;
 use WSW\SiftScience\Entities\Promotion;
+use WSW\SiftScience\Support\Traits\Transformers\Relationships;
+use WSW\SiftScience\Transformers\AbstractTransformer;
 
 /**
  * Class PromotionTransformer
  *
- * @package WSW\SiftScience\Transformers
+ * @package WSW\SiftScience\Transformers\Entities
  * @author Ronaldo Matos Rodrigues <ronaldo@whera.com.br>
  */
 class PromotionTransformer extends AbstractTransformer
 {
+    use Relationships;
+
     /**
      * @param Promotion $promotion
      *
@@ -30,33 +32,5 @@ class PromotionTransformer extends AbstractTransformer
             '$discount' => $this->discount($promotion->getDiscount()),
             '$credit_point' => $this->creditPoint($promotion->getCreditPoint())
         ]);
-    }
-
-    /**
-     * @param Discount $discount
-     *
-     * @return array
-     */
-    protected function discount($discount)
-    {
-        if (!$discount instanceof Discount) {
-            return null;
-        }
-
-        return $this->loadItem($discount, new DiscountTransformer);
-    }
-
-    /**
-     * @param CreditPoint $creditPoint
-     *
-     * @return array
-     */
-    protected function creditPoint($creditPoint)
-    {
-        if (!$creditPoint instanceof CreditPoint) {
-            return null;
-        }
-
-        return $this->loadItem($creditPoint, new CreditPointTransformer);
     }
 }

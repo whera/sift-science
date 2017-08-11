@@ -2,31 +2,31 @@
 
 namespace WSW\SiftScience\Services;
 
-use WSW\SiftScience\Events\CreateOrder;
+use WSW\SiftScience\Events\UpdateOrder;
 use WSW\SiftScience\Transformers\Events\OrderTransformer;
 
 /**
- * Class CreateOrderService
+ * Class UpdateOrderService
  *
  * @package WSW\SiftScience\Services
  * @author Ronaldo Matos Rodrigues <ronaldo@whera.com.br>
  */
-class CreateOrderService extends BaseService
+class UpdateOrderService extends BaseService
 {
     /**
-     * @return CreateOrder
+     * @return UpdateOrder
      */
-    public function createOrderBuilder()
+    public function updateOrderBuilder()
     {
-        return new CreateOrder();
+        return new UpdateOrder();
     }
 
     /**
-     * @param CreateOrder $order
+     * @param UpdateOrder $order
      *
      * @return bool
      */
-    public function create(CreateOrder $order)
+    public function update(UpdateOrder $order)
     {
         $order->setApiKey($this->credentials->getApiKey());
         $body = $this->item($order, new OrderTransformer)->toJson();

@@ -1,18 +1,26 @@
 <?php
 
-namespace WSW\SiftScience\Transformers;
+namespace WSW\SiftScience\Transformers\Entities;
 
-use WSW\Email\Email;
 use WSW\SiftScience\Entities\PaymentMethod;
+use WSW\SiftScience\Support\Traits\Transformers\ObjectValues;
+use WSW\SiftScience\Transformers\AbstractTransformer;
 
 /**
  * Class PaymentMethodTransformer
  *
- * @package WSW\SiftScience\Transformers
+ * @package WSW\SiftScience\Transformers\Entities
  * @author Ronaldo Matos Rodrigues <ronaldo@whera.com.br>
  */
 class PaymentMethodTransformer extends AbstractTransformer
 {
+    use ObjectValues;
+
+    /**
+     * @param PaymentMethod $paymentMethod
+     *
+     * @return array
+     */
     public function transform(PaymentMethod $paymentMethod)
     {
         return array_filter([
@@ -26,9 +34,7 @@ class PaymentMethodTransformer extends AbstractTransformer
             '$routing_number' => $paymentMethod->getRoutingNumber(),
             '$decline_reason_code' => $paymentMethod->getDeclineReasonCode(),
             '$paypal_payer_id' => $paymentMethod->getPaypalPayerId(),
-            '$paypal_payer_email' => (!$paymentMethod->getPaypalPayerEmail() instanceof Email)
-                ? null
-                :  $paymentMethod->getPaypalPayerEmail()->getEmail(),
+            '$paypal_payer_email' => $this->email($paymentMethod->getPaypalPayerEmail()),
             '$paypal_payer_status' => $paymentMethod->getPaypalPayerStatus(),
             '$paypal_address_status' => $paymentMethod->getPaypalAddressStatus(),
             '$paypal_protection_eligibility' => $paymentMethod->getPaypalProtectionEligibility(),

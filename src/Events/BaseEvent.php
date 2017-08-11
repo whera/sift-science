@@ -26,6 +26,11 @@ abstract class BaseEvent
     protected $userId;
 
     /**
+     * @var string
+     */
+    protected $sessionId;
+
+    /**
      * @return string
      */
     public function getType()
@@ -69,6 +74,26 @@ abstract class BaseEvent
     public function setUserId($userId)
     {
         $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSessionId()
+    {
+        return $this->sessionId;
+    }
+
+    /**
+     * @param string $sessionId
+     *
+     * @return $this
+     */
+    public function setSessionId($sessionId)
+    {
+        $this->sessionId = $sessionId;
 
         return $this;
     }
