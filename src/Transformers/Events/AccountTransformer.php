@@ -29,6 +29,7 @@ class AccountTransformer extends AbstractTransformer
             '$type' => $event->getType(),
             '$api_key' => $event->getApiKey(),
             '$user_id' => $event->getUserId(),
+            '$session_id' => $event->getSessionId(),
             '$changed_password' => $event->isChangedPassword(),
             '$user_email' => $this->email($event->getUserEmail()),
             '$name' => $event->getName(),
