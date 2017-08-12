@@ -29,7 +29,7 @@ class OrderTransformer extends AbstractTransformer
             '$type' => $order->getType(),
             '$api_key' => $order->getApiKey(),
             '$user_id' => $order->getUserId(),
-            '$session_id' => $order->getSession(),
+            '$session_id' => $order->getSessionId(),
             '$order_id' => $order->getOrder(),
             '$user_email' => $this->email($order->getUserEmail()),
             '$amount' => $this->amount($order->getAmount()),
