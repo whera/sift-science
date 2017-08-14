@@ -72,15 +72,4 @@ abstract class BaseService
     {
         return $this->fractal->createData(new Item($data, $transformer));
     }
-
-    /**
-     * @param mixed $data
-     * @param TransformerAbstract $transformer
-     *
-     * @return \League\Fractal\Scope
-     */
-    protected function collection($data = null, TransformerAbstract $transformer = null)
-    {
-        return $this->fractal->createData(new Collection($data, $transformer));
-    }
 }

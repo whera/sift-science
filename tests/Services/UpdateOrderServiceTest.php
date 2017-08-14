@@ -11,6 +11,7 @@ use WSW\SiftScience\TestCase;
  * Class UpdateOrderServiceTest
  *
  * @package WSW\SiftScience\Services
+ * @author Ronaldo Matos Rodrigues <ronaldo@whera.com.br>
  */
 class UpdateOrderServiceTest extends TestCase
 {
