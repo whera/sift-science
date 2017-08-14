@@ -21,6 +21,9 @@ class ChargebackTransformer extends AbstractTransformer
     public function transform(Chargeback $chargeback)
     {
         return array_filter([
+            '$type' => $chargeback->getType(),
+            '$api_key' => $chargeback->getApiKey(),
+            '$user_id' => $chargeback->getUserId(),
             '$order_id' => $chargeback->getOrder(),
             '$transaction_id' => $chargeback->getTransaction(),
             '$chargeback_state' => $chargeback->getChargebackState(),
