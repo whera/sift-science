@@ -53,17 +53,6 @@ abstract class BaseService
 
     /**
      * @param string $resource
-     * @param array $params
-     *
-     * @return ResponseInterface
-     */
-    protected function get($resource, array $params = [])
-    {
-        return $this->client->get($this->credentials->getWsUrl($resource, $params));
-    }
-
-    /**
-     * @param string $resource
      * @param string $request
      *
      * @return ResponseInterface

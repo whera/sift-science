@@ -70,24 +70,4 @@ class Client
             throw new SiftScienceRequestException($e);
         }
     }
-
-    /**
-     * @param string $url
-     * @throws SiftScienceRequestException
-     *
-     * @return ResponseInterface
-     */
-    public function get($url)
-    {
-        try {
-            $response = $this->client->request('GET', $url, [
-                'headers' => $this->headers->getValues(),
-                'verify' => false
-            ]);
-
-            return $response;
-        } catch (RequestException $e) {
-            throw new SiftScienceRequestException($e);
-        }
-    }
 }
