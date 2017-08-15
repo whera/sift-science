@@ -23,6 +23,8 @@ use WSW\SiftScience\Transformers\Entities\PromotionTransformer;
  */
 trait Relationships
 {
+    use Fractal;
+
     /**
      * @param $address|null
      *
@@ -30,7 +32,9 @@ trait Relationships
      */
     public function address($address = null)
     {
-        return (!$address instanceof Address) ? null : $this->loadItem($address, new AddressTransformer());
+        return (!$address instanceof Address)
+            ? null
+            : $this->loadItem($address, new AddressTransformer)->toArray();
     }
 
     /**
@@ -40,7 +44,9 @@ trait Relationships
      */
     public function discount($discount = null)
     {
-        return (!$discount instanceof Discount) ? null : $this->loadItem($discount, new DiscountTransformer);
+        return (!$discount instanceof Discount)
+            ? null
+            : $this->loadItem($discount, new DiscountTransformer)->toArray();
     }
 
     /**
@@ -52,7 +58,7 @@ trait Relationships
     {
         return (!$creditPoint instanceof CreditPoint)
             ? null
-            : $this->loadItem($creditPoint, new CreditPointTransformer);
+            : $this->loadItem($creditPoint, new CreditPointTransformer)->toArray();
     }
 
     /**
@@ -64,7 +70,7 @@ trait Relationships
     {
         return (!$collection instanceof  PaymentMethods)
             ? null
-            : $this->loadCollection($collection->getValues(), new PaymentMethodTransformer);
+            : $this->loadCollection($collection->getValues(), new PaymentMethodTransformer)->toArray();
     }
 
     /**
@@ -76,7 +82,7 @@ trait Relationships
     {
         return (!$items instanceof Items)
             ? null
-            : $this->loadCollection($items->getValues(), new ItemTransformer);
+            : $this->loadCollection($items->getValues(), new ItemTransformer)->toArray();
     }
 
     /**
@@ -84,10 +90,10 @@ trait Relationships
      *
      * @return array|null
      */
-    public function promotions(Promotions $promotions = null)
+    public function promotions($promotions = null)
     {
         return (!$promotions instanceof Promotions)
             ? null
-            : $this->loadCollection($promotions->getValues(), new PromotionTransformer);
+            : $this->loadCollection($promotions->getValues(), new PromotionTransformer)->toArray();
     }
 }

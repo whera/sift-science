@@ -23,7 +23,7 @@ class DiscountTransformer extends AbstractTransformer
     public function transform(Discount $discount)
     {
         return array_filter([
-            '$percentage_off' => $discount->getPercentage()->getPercent(),
+            '$percentage_off' => $this->percent($discount->getPercentage()),
             '$amount' => $this->amount($discount->getAmount()),
             '$currency_code' => $this->currency($discount->getAmount()),
             '$minimum_purchase_amount' => $this->amount($discount->getMinimumPurchaseAmount())

@@ -6,6 +6,7 @@ use DateTime;
 use WSW\Email\Email;
 use WSW\Money\Currency;
 use WSW\Money\Money;
+use WSW\Money\Percentage;
 
 /**
  * Trait ObjectValues
@@ -57,5 +58,15 @@ trait ObjectValues
     public function dateTime($dateTime)
     {
         return (!$dateTime instanceof DateTime) ? null : $dateTime->getTimestamp();
+    }
+
+    /**
+     * @param Percentage|null $percentage
+     *
+     * @return float|null
+     */
+    public function percent($percentage)
+    {
+        return (!$percentage instanceof Percentage) ? null : $percentage->getPercent();
     }
 }
