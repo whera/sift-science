@@ -3,6 +3,7 @@
 namespace WSW\SiftScience\Services;
 
 use WSW\SiftScience\Events\Chargeback;
+use WSW\SiftScience\Support\Traits\Transformers\Fractal;
 use WSW\SiftScience\Transformers\Events\ChargebackTransformer;
 
 /**
@@ -13,6 +14,8 @@ use WSW\SiftScience\Transformers\Events\ChargebackTransformer;
  */
 class ChargebackService extends BaseService
 {
+    use Fractal;
+
     /**
      * @return Chargeback
      */
@@ -29,7 +32,7 @@ class ChargebackService extends BaseService
     public function create(Chargeback $event)
     {
         $event->setApiKey($this->credentials->getApiKey());
-        $body = $this->item($event, new ChargebackTransformer)->toJson();
+        $body = $this->loadItem($event, new ChargebackTransformer)->toJson();
         $this->post(static::ENDPOINT, $body);
 
         return true;

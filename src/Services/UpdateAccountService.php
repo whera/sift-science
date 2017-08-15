@@ -3,6 +3,7 @@
 namespace WSW\SiftScience\Services;
 
 use WSW\SiftScience\Events\UpdateAccount;
+use WSW\SiftScience\Support\Traits\Transformers\Fractal;
 use WSW\SiftScience\Transformers\Events\AccountTransformer;
 
 /**
@@ -13,6 +14,8 @@ use WSW\SiftScience\Transformers\Events\AccountTransformer;
  */
 class UpdateAccountService extends BaseService
 {
+    use Fractal;
+
     /**
      * @return UpdateAccount
      */
@@ -29,7 +32,7 @@ class UpdateAccountService extends BaseService
     public function update(UpdateAccount $event)
     {
         $event->setApiKey($this->credentials->getApiKey());
-        $body = $this->item($event, new AccountTransformer)->toJson();
+        $body = $this->loadItem($event, new AccountTransformer)->toJson();
         $this->post(static::ENDPOINT, $body);
 
         return true;

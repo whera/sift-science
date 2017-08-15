@@ -19,29 +19,31 @@ class OrderTransformer extends AbstractTransformer
     use Relationships;
 
     /**
-     * @param AbstractOrder $order
+     * @param AbstractOrder $event
      *
      * @return array
      */
-    public function transform(AbstractOrder $order)
+    public function transform(AbstractOrder $event)
     {
         return array_filter([
-            '$type' => $order->getType(),
-            '$api_key' => $order->getApiKey(),
-            '$user_id' => $order->getUserId(),
-            '$session_id' => $order->getSessionId(),
-            '$order_id' => $order->getOrder(),
-            '$user_email' => $this->email($order->getUserEmail()),
-            '$amount' => $this->amount($order->getAmount()),
-            '$currency_code' => $this->currency($order->getAmount()),
-            '$billing_address' => $this->address($order->getBillingAddress()),
-            '$payment_methods' => $this->paymentMethods($order->getPaymentMethods()),
-            '$shipping_address' => $this->address($order->getShippingAddress()),
-            '$expedited_shipping' => $order->isExpeditedShipping(),
-            '$shipping_method' => $order->getShippingMethod(),
-            '$items' => $this->items($order->getItems()),
-            '$seller_user_id' => $order->getSellerUserId(),
-            '$promotions' => $this->promotions($order->getPromotions())
+            '$type' => $event->getType(),
+            '$api_key' => $event->getApiKey(),
+            '$user_id' => $event->getUserId(),
+            '$session_id' => $event->getSessionId(),
+            '$ip' => $event->getIp(),
+            '$time' => $this->dateTime($event->getTime()),
+            '$order_id' => $event->getOrder(),
+            '$user_email' => $this->email($event->getUserEmail()),
+            '$amount' => $this->amount($event->getAmount()),
+            '$currency_code' => $this->currency($event->getAmount()),
+            '$billing_address' => $this->address($event->getBillingAddress()),
+            '$payment_methods' => $this->paymentMethods($event->getPaymentMethods()),
+            '$shipping_address' => $this->address($event->getShippingAddress()),
+            '$expedited_shipping' => $event->isExpeditedShipping(),
+            '$shipping_method' => $event->getShippingMethod(),
+            '$items' => $this->items($event->getItems()),
+            '$seller_user_id' => $event->getSellerUserId(),
+            '$promotions' => $this->promotions($event->getPromotions())
         ]);
     }
 }

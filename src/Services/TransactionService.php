@@ -3,6 +3,7 @@
 namespace WSW\SiftScience\Services;
 
 use WSW\SiftScience\Events\Transaction;
+use WSW\SiftScience\Support\Traits\Transformers\Fractal;
 use WSW\SiftScience\Transformers\Events\TransactionTransformer;
 
 /**
@@ -13,6 +14,8 @@ use WSW\SiftScience\Transformers\Events\TransactionTransformer;
  */
 class TransactionService extends BaseService
 {
+    use Fractal;
+
     /**
      * @return Transaction
      */
@@ -29,7 +32,7 @@ class TransactionService extends BaseService
     public function create(Transaction $event)
     {
         $event->setApiKey($this->credentials->getApiKey());
-        $body = $this->item($event, new TransactionTransformer)->toJson();
+        $body = $this->loadItem($event, new TransactionTransformer)->toJson();
         $this->post(static::ENDPOINT, $body);
 
         return true;

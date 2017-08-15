@@ -2,9 +2,11 @@
 
 namespace WSW\SiftScience\Support\Traits\Transformers;
 
+use DateTime;
 use WSW\Email\Email;
 use WSW\Money\Currency;
 use WSW\Money\Money;
+use WSW\Money\Percentage;
 
 /**
  * Trait ObjectValues
@@ -19,7 +21,7 @@ trait ObjectValues
      *
      * @return null|string
      */
-    protected function email($email = null)
+    public function email($email = null)
     {
         return (!$email instanceof Email) ? null : $email->getEmail();
     }
@@ -29,7 +31,7 @@ trait ObjectValues
      *
      * @return int|null
      */
-    protected function amount($amount)
+    public function amount($amount)
     {
         return (!$amount instanceof Money) ? null : $amount->getMicros();
     }
@@ -39,12 +41,32 @@ trait ObjectValues
      *
      * @return null|string
      */
-    protected function currency($currency)
+    public function currency($currency)
     {
         if ($currency instanceof Money) {
             return $currency->getCurrency()->getCode();
         }
 
         return ($currency instanceof Currency) ? $currency->getCode() : null;
+    }
+
+    /**
+     * @param \DateTime|null $dateTime
+     *
+     * @return int|null
+     */
+    public function dateTime($dateTime)
+    {
+        return (!$dateTime instanceof DateTime) ? null : $dateTime->getTimestamp();
+    }
+
+    /**
+     * @param Percentage|null $percentage
+     *
+     * @return float|null
+     */
+    public function percent($percentage)
+    {
+        return (!$percentage instanceof Percentage) ? null : $percentage->getPercent();
     }
 }

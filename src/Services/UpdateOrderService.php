@@ -3,6 +3,7 @@
 namespace WSW\SiftScience\Services;
 
 use WSW\SiftScience\Events\UpdateOrder;
+use WSW\SiftScience\Support\Traits\Transformers\Fractal;
 use WSW\SiftScience\Transformers\Events\OrderTransformer;
 
 /**
@@ -13,6 +14,8 @@ use WSW\SiftScience\Transformers\Events\OrderTransformer;
  */
 class UpdateOrderService extends BaseService
 {
+    use Fractal;
+
     /**
      * @return UpdateOrder
      */
@@ -29,7 +32,7 @@ class UpdateOrderService extends BaseService
     public function update(UpdateOrder $order)
     {
         $order->setApiKey($this->credentials->getApiKey());
-        $body = $this->item($order, new OrderTransformer)->toJson();
+        $body = $this->loadItem($order, new OrderTransformer)->toJson();
         $this->post(static::ENDPOINT, $body);
 
         return true;

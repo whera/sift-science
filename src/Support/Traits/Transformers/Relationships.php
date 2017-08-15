@@ -23,14 +23,18 @@ use WSW\SiftScience\Transformers\Entities\PromotionTransformer;
  */
 trait Relationships
 {
+    use Fractal;
+
     /**
-     * @param $address|null
+     * @param Address|null $address
      *
      * @return array|null
      */
-    protected function address($address = null)
+    public function address($address = null)
     {
-        return (!$address instanceof Address) ? null : $this->loadItem($address, new AddressTransformer());
+        return (!$address instanceof Address)
+            ? null
+            : $this->loadItem($address, new AddressTransformer)->toArray();
     }
 
     /**
@@ -38,9 +42,11 @@ trait Relationships
      *
      * @return array|null
      */
-    protected function discount($discount = null)
+    public function discount($discount = null)
     {
-        return (!$discount instanceof Discount) ? null : $this->loadItem($discount, new DiscountTransformer);
+        return (!$discount instanceof Discount)
+            ? null
+            : $this->loadItem($discount, new DiscountTransformer)->toArray();
     }
 
     /**
@@ -48,11 +54,11 @@ trait Relationships
      *
      * @return array
      */
-    protected function creditPoint($creditPoint = null)
+    public function creditPoint($creditPoint = null)
     {
         return (!$creditPoint instanceof CreditPoint)
             ? null
-            : $this->loadItem($creditPoint, new CreditPointTransformer);
+            : $this->loadItem($creditPoint, new CreditPointTransformer)->toArray();
     }
 
     /**
@@ -60,11 +66,11 @@ trait Relationships
      *
      * @return array
      */
-    protected function paymentMethods($collection = null)
+    public function paymentMethods($collection = null)
     {
         return (!$collection instanceof  PaymentMethods)
             ? null
-            : $this->loadCollection($collection->getValues(), new PaymentMethodTransformer);
+            : $this->loadCollection($collection->getValues(), new PaymentMethodTransformer)->toArray();
     }
 
     /**
@@ -72,11 +78,11 @@ trait Relationships
      *
      * @return array
      */
-    protected function items($items)
+    public function items($items)
     {
         return (!$items instanceof Items)
             ? null
-            : $this->loadCollection($items->getValues(), new ItemTransformer);
+            : $this->loadCollection($items->getValues(), new ItemTransformer)->toArray();
     }
 
     /**
@@ -84,10 +90,10 @@ trait Relationships
      *
      * @return array|null
      */
-    protected function promotions(Promotions $promotions = null)
+    public function promotions($promotions = null)
     {
         return (!$promotions instanceof Promotions)
             ? null
-            : $this->loadCollection($promotions->getValues(), new PromotionTransformer);
+            : $this->loadCollection($promotions->getValues(), new PromotionTransformer)->toArray();
     }
 }

@@ -2,6 +2,8 @@
 
 namespace WSW\SiftScience\Events;
 
+use DateTime;
+
 /**
  * Class BaseEvent
  *
@@ -29,6 +31,24 @@ abstract class BaseEvent
      * @var string
      */
     protected $sessionId;
+
+    /**
+     * @var string
+     */
+    protected $ip;
+
+    /**
+     * @var \DateTime
+     */
+    protected $time;
+
+    /**
+     * BaseEvent constructor.
+     */
+    public function __construct()
+    {
+        $this->time = new DateTime();
+    }
 
     /**
      * @return string
@@ -94,6 +114,46 @@ abstract class BaseEvent
     public function setSessionId($sessionId)
     {
         $this->sessionId = $sessionId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * @param string $ip
+     *
+     * @return $this
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * @param \DateTime $time
+     *
+     * @return $this
+     */
+    public function setTime(DateTime $time)
+    {
+        $this->time = $time;
 
         return $this;
     }

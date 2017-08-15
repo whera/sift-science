@@ -19,28 +19,30 @@ class TransactionTransformer extends AbstractTransformer
     use ObjectValues;
 
     /**
-     * @param Transaction $transaction
+     * @param Transaction $event
      *
      * @return array
      */
-    public function transform(Transaction $transaction)
+    public function transform(Transaction $event)
     {
         return array_filter([
-            '$type' => $transaction->getType(),
-            '$api_key' => $transaction->getApiKey(),
-            '$user_id' => $transaction->getUserId(),
-            '$user_email' => $this->email($transaction->getUserEmail()),
-            '$transaction_type' => $transaction->getTransactionType(),
-            '$transaction_status' => $transaction->getTransactionStatus(),
-            '$amount' => $this->amount($transaction->getAmount()),
-            '$currency_code' => $this->currency($transaction->getAmount()),
-            '$order_id' => $transaction->getOrderId(),
-            '$transaction_id' => $transaction->getId(),
-            '$billing_address' => $this->address($transaction->getBillingAddress()),
-            '$shipping_address' => $this->address($transaction->getShippingAddress()),
-            '$session_id' => $transaction->getSessionId(),
-            '$seller_user_id' => $transaction->getSellerUserId(),
-            '$transfer_recipient_user_id' => $transaction->getTransferRecipientUserId()
+            '$type' => $event->getType(),
+            '$api_key' => $event->getApiKey(),
+            '$user_id' => $event->getUserId(),
+            '$user_email' => $this->email($event->getUserEmail()),
+            '$ip' => $event->getIp(),
+            '$time' => $this->dateTime($event->getTime()),
+            '$transaction_type' => $event->getTransactionType(),
+            '$transaction_status' => $event->getTransactionStatus(),
+            '$amount' => $this->amount($event->getAmount()),
+            '$currency_code' => $this->currency($event->getAmount()),
+            '$order_id' => $event->getOrderId(),
+            '$transaction_id' => $event->getId(),
+            '$billing_address' => $this->address($event->getBillingAddress()),
+            '$shipping_address' => $this->address($event->getShippingAddress()),
+            '$session_id' => $event->getSessionId(),
+            '$seller_user_id' => $event->getSellerUserId(),
+            '$transfer_recipient_user_id' => $event->getTransferRecipientUserId()
         ]);
     }
 }
