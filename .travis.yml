@@ -18,6 +18,6 @@ script:
   - ./vendor/bin/phpunit $PHPUNIT_FLAGS
 
 after_script:
-  - wget https://scrutinizer-ci.com/ocular.phar
+  - if [ -f coverage.xml ]; then wget https://scrutinizer-ci.com/ocular.phar; fi
   - if [ -f coverage.xml ]; then php ocular.phar code-coverage:upload --format=php-clover ./coverage.xml; fi
   - if [ -f coverage.xml ]; then bash <(curl -s https://codecov.io/bash); fi
