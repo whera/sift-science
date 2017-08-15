@@ -26,7 +26,7 @@ trait Relationships
     use Fractal;
 
     /**
-     * @param $address|null
+     * @param Address|null $address
      *
      * @return array|null
      */

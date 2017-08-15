@@ -18,7 +18,7 @@ use WSW\SiftScience\Exceptions\SiftScienceRequestException;
 class Client
 {
     /**
-     * @var \GuzzleHttp\Client
+     * @var HttpClient
      */
     private $client;
 
@@ -66,6 +66,7 @@ class Client
             ]);
 
             return $response;
+
         } catch (RequestException $e) {
             throw new SiftScienceRequestException($e);
         }
