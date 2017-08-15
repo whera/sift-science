@@ -3,6 +3,7 @@
 namespace WSW\SiftScience\Transformers\Events;
 
 use WSW\SiftScience\Events\Chargeback;
+use WSW\SiftScience\Support\Traits\Transformers\ObjectValues;
 use WSW\SiftScience\Transformers\AbstractTransformer;
 
 /**
@@ -13,21 +14,25 @@ use WSW\SiftScience\Transformers\AbstractTransformer;
  */
 class ChargebackTransformer extends AbstractTransformer
 {
+    use ObjectValues;
+
     /**
-     * @param Chargeback $chargeback
+     * @param Chargeback $event
      *
      * @return array
      */
-    public function transform(Chargeback $chargeback)
+    public function transform(Chargeback $event)
     {
         return array_filter([
-            '$type' => $chargeback->getType(),
-            '$api_key' => $chargeback->getApiKey(),
-            '$user_id' => $chargeback->getUserId(),
-            '$order_id' => $chargeback->getOrder(),
-            '$transaction_id' => $chargeback->getTransaction(),
-            '$chargeback_state' => $chargeback->getChargebackState(),
-            '$chargeback_reason' => $chargeback->getChargebackReason()
+            '$type' => $event->getType(),
+            '$api_key' => $event->getApiKey(),
+            '$user_id' => $event->getUserId(),
+            '$ip' => $event->getIp(),
+            '$time' => $this->dateTime($event->getTime()),
+            '$order_id' => $event->getOrder(),
+            '$transaction_id' => $event->getTransaction(),
+            '$chargeback_state' => $event->getChargebackState(),
+            '$chargeback_reason' => $event->getChargebackReason()
         ]);
     }
 }

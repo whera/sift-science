@@ -79,6 +79,7 @@ class Transaction extends BaseEvent
     public function __construct()
     {
         $this->type = '$transaction';
+        parent::__construct();
     }
 
     /**

@@ -28,7 +28,7 @@ trait Relationships
      *
      * @return array|null
      */
-    protected function address($address = null)
+    public function address($address = null)
     {
         return (!$address instanceof Address) ? null : $this->loadItem($address, new AddressTransformer());
     }
@@ -38,7 +38,7 @@ trait Relationships
      *
      * @return array|null
      */
-    protected function discount($discount = null)
+    public function discount($discount = null)
     {
         return (!$discount instanceof Discount) ? null : $this->loadItem($discount, new DiscountTransformer);
     }
@@ -48,7 +48,7 @@ trait Relationships
      *
      * @return array
      */
-    protected function creditPoint($creditPoint = null)
+    public function creditPoint($creditPoint = null)
     {
         return (!$creditPoint instanceof CreditPoint)
             ? null
@@ -60,7 +60,7 @@ trait Relationships
      *
      * @return array
      */
-    protected function paymentMethods($collection = null)
+    public function paymentMethods($collection = null)
     {
         return (!$collection instanceof  PaymentMethods)
             ? null
@@ -72,7 +72,7 @@ trait Relationships
      *
      * @return array
      */
-    protected function items($items)
+    public function items($items)
     {
         return (!$items instanceof Items)
             ? null
@@ -84,7 +84,7 @@ trait Relationships
      *
      * @return array|null
      */
-    protected function promotions(Promotions $promotions = null)
+    public function promotions(Promotions $promotions = null)
     {
         return (!$promotions instanceof Promotions)
             ? null
