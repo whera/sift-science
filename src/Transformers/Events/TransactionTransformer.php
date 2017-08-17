@@ -38,6 +38,7 @@ class TransactionTransformer extends AbstractTransformer
             '$currency_code' => $this->currency($event->getAmount()),
             '$order_id' => $event->getOrderId(),
             '$transaction_id' => $event->getId(),
+            '$payment_method' => $this->paymentMethod($event->getPaymentMethod()),
             '$billing_address' => $this->address($event->getBillingAddress()),
             '$shipping_address' => $this->address($event->getShippingAddress()),
             '$session_id' => $event->getSessionId(),

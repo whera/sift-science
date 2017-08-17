@@ -8,6 +8,7 @@ use WSW\SiftScience\Collections\Promotions;
 use WSW\SiftScience\Entities\Address;
 use WSW\SiftScience\Entities\CreditPoint;
 use WSW\SiftScience\Entities\Discount;
+use WSW\SiftScience\Entities\PaymentMethod;
 use WSW\SiftScience\Transformers\Entities\AddressTransformer;
 use WSW\SiftScience\Transformers\Entities\CreditPointTransformer;
 use WSW\SiftScience\Transformers\Entities\DiscountTransformer;
@@ -71,6 +72,18 @@ trait Relationships
         return (!$collection instanceof  PaymentMethods)
             ? null
             : $this->loadCollection($collection->getValues(), new PaymentMethodTransformer)->toArray();
+    }
+
+    /**
+     * @param PaymentMethod|null $item
+     *
+     * @return array
+     */
+    public function paymentMethod($item = null)
+    {
+        return (!$item instanceof  PaymentMethod)
+            ? null
+            : $this->loadItem($item, new PaymentMethodTransformer)->toArray();
     }
 
     /**
