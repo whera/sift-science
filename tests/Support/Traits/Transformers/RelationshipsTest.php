@@ -87,6 +87,18 @@ class RelationshipsTest extends TestCase
         $this->assertInternalType('array', $this->trait->paymentMethods($collection));
     }
 
+    public function testPaymentMethodNull()
+    {
+        $this->assertEquals(null, $this->trait->paymentMethod('900'));
+        $this->assertEquals(null, $this->trait->paymentMethod('null'));
+        $this->assertEquals(null, $this->trait->paymentMethod(null));
+    }
+
+    public function testPaymentMethodInstance()
+    {
+        $this->assertInternalType('array', $this->trait->paymentMethod(new PaymentMethod));
+    }
+
     public function testItemsNull()
     {
         $this->assertEquals(null, $this->trait->items('900'));
