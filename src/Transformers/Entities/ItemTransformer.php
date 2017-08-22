@@ -27,7 +27,7 @@ class ItemTransformer extends AbstractTransformer
             '$item_id' => $item->getId(),
             '$product_title' => $item->getTitle(),
             '$price' => $this->amount($item->getPrice()),
-            '$currency_code' => $this->amount($item->getPrice()),
+            '$currency_code' => $this->currency($item->getPrice()),
             '$quantity' => $item->getQuantity(),
             '$upc' => $item->getUpc(),
             '$sku' => $item->getSku(),
