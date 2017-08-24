@@ -77,7 +77,6 @@ abstract class AbstractAccount extends BaseEvent
         $this->type = $type;
         $this->paymentMethods = new PaymentMethods();
         $this->promotions = new Promotions();
-        parent::__construct();
     }
 
     /**

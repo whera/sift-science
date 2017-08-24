@@ -87,7 +87,6 @@ abstract class AbstractOrder extends BaseEvent
         $this->items = new Items();
         $this->paymentMethods = new PaymentMethods();
         $this->promotions = new Promotions();
-        parent::__construct();
     }
 
     /**
