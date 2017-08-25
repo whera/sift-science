@@ -2,6 +2,8 @@
 
 namespace WSW\SiftScience\Entities;
 
+use WSW\SiftScience\Support\Formatter;
+
 /**
  * Class Address
  *
@@ -85,7 +87,7 @@ class Address
      */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
+        $this->phone = Formatter::phone($phone);
 
         return $this;
     }

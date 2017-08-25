@@ -43,14 +43,6 @@ abstract class BaseEvent
     protected $time;
 
     /**
-     * BaseEvent constructor.
-     */
-    public function __construct()
-    {
-        $this->time = new DateTime();
-    }
-
-    /**
      * @return string
      */
     public function getType()

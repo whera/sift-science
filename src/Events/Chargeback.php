@@ -40,7 +40,6 @@ class Chargeback extends BaseEvent
     public function __construct()
     {
         $this->type = '$chargeback';
-        parent::__construct();
     }
 
     /**
