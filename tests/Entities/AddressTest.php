@@ -38,7 +38,7 @@ class AddressTest extends TestCase
         $address = $this->instanceAddress();
 
         $this->assertAttributeEquals("Bill Jones", "name", $address);
-        $this->assertAttributeEquals("1-415-555-6041", "phone", $address);
+        $this->assertAttributeEquals("14155556041", "phone", $address);
         $this->assertAttributeEquals("2100 Main Street", "address1", $address);
         $this->assertAttributeEquals("Apt 3B", "address2", $address);
         $this->assertAttributeEquals("New London", "city", $address);
@@ -55,7 +55,7 @@ class AddressTest extends TestCase
         $address = $this->instanceAddress();
 
         $this->assertEquals("Bill Jones", $address->getName());
-        $this->assertEquals("1-415-555-6041", $address->getPhone());
+        $this->assertEquals("14155556041", $address->getPhone());
         $this->assertEquals("2100 Main Street", $address->getAddress1());
         $this->assertEquals("Apt 3B", $address->getAddress2());
         $this->assertEquals("New London", $address->getCity());

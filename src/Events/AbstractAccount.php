@@ -10,6 +10,7 @@ use WSW\SiftScience\Entities\Address;
 use WSW\SiftScience\Entities\PaymentMethod;
 use WSW\SiftScience\Entities\Promotion;
 use WSW\SiftScience\Support\AllowedValues\SocialSignOnType;
+use WSW\SiftScience\Support\Formatter;
 
 /**
  * Class AbstractAccount
@@ -134,7 +135,7 @@ abstract class AbstractAccount extends BaseEvent
      */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
+        $this->phone = Formatter::phone($phone);
 
         return $this;
     }
