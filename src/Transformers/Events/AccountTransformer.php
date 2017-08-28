@@ -2,6 +2,7 @@
 
 namespace WSW\SiftScience\Transformers\Events;
 
+use stdClass;
 use WSW\SiftScience\Events\AbstractAccount;
 use WSW\SiftScience\Support\Traits\Transformers\ObjectValues;
 use WSW\SiftScience\Support\Traits\Transformers\Relationships;
@@ -25,7 +26,7 @@ class AccountTransformer extends AbstractTransformer
      */
     public function transform(AbstractAccount $event)
     {
-        return array_filter([
+        $data = [
             '$type' => $event->getType(),
             '$api_key' => $event->getApiKey(),
             '$user_id' => $event->getUserId(),
@@ -41,6 +42,8 @@ class AccountTransformer extends AbstractTransformer
             '$billing_address' => $this->address($event->getBillingAddress()),
             '$shipping_address' => $this->address($event->getShippingAddress()),
             '$social_sign_on_type' => $event->getSocialSignOnType()
-        ]);
+        ];
+
+        return $this->result($event, $data);
     }
 }

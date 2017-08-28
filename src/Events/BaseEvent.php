@@ -3,6 +3,7 @@
 namespace WSW\SiftScience\Events;
 
 use DateTime;
+use stdClass;
 
 /**
  * Class BaseEvent
@@ -41,6 +42,11 @@ abstract class BaseEvent
      * @var \DateTime
      */
     protected $time;
+
+    /**
+     * @var stdClass
+     */
+    protected $customFields;
 
     /**
      * @return string
@@ -146,6 +152,26 @@ abstract class BaseEvent
     public function setTime(DateTime $time)
     {
         $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * @return stdClass
+     */
+    public function getCustomFields()
+    {
+        return $this->customFields;
+    }
+
+    /**
+     * @param stdClass $customFields
+     *
+     * @return $this
+     */
+    public function setCustomFields(stdClass $customFields)
+    {
+        $this->customFields = $customFields;
 
         return $this;
     }
