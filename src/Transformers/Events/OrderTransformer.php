@@ -25,7 +25,7 @@ class OrderTransformer extends AbstractTransformer
      */
     public function transform(AbstractOrder $event)
     {
-        return array_filter([
+        $data = [
             '$type' => $event->getType(),
             '$api_key' => $event->getApiKey(),
             '$user_id' => $event->getUserId(),
@@ -44,6 +44,8 @@ class OrderTransformer extends AbstractTransformer
             '$items' => $this->items($event->getItems()),
             '$seller_user_id' => $event->getSellerUserId(),
             '$promotions' => $this->promotions($event->getPromotions())
-        ]);
+        ];
+
+        return $this->result($event, $data);
     }
 }

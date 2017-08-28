@@ -23,7 +23,7 @@ class ChargebackTransformer extends AbstractTransformer
      */
     public function transform(Chargeback $event)
     {
-        return array_filter([
+        $data = [
             '$type' => $event->getType(),
             '$api_key' => $event->getApiKey(),
             '$user_id' => $event->getUserId(),
@@ -33,6 +33,8 @@ class ChargebackTransformer extends AbstractTransformer
             '$transaction_id' => $event->getTransaction(),
             '$chargeback_state' => $event->getChargebackState(),
             '$chargeback_reason' => $event->getChargebackReason()
-        ]);
+        ];
+
+        return $this->result($event, $data);
     }
 }

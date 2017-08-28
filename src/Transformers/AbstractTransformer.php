@@ -3,6 +3,8 @@
 namespace WSW\SiftScience\Transformers;
 
 use League\Fractal\TransformerAbstract;
+use stdClass;
+use WSW\SiftScience\Events\BaseEvent;
 
 /**
  * Class AbstractTransformer
@@ -12,4 +14,20 @@ use League\Fractal\TransformerAbstract;
  */
 abstract class AbstractTransformer extends TransformerAbstract
 {
+    /**
+     * @param \WSW\SiftScience\Events\BaseEvent $event
+     * @param array $data
+     *
+     * @return array
+     */
+    public function result(BaseEvent $event, array $data = [])
+    {
+        $result = $data;
+
+        if ($event->getCustomFields() instanceof stdClass) {
+            $result = array_merge($data, (array) $event->getCustomFields());
+        }
+
+        return array_filter($result);
+    }
 }

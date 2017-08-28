@@ -25,7 +25,7 @@ class TransactionTransformer extends AbstractTransformer
      */
     public function transform(Transaction $event)
     {
-        return array_filter([
+        $data = [
             '$type' => $event->getType(),
             '$api_key' => $event->getApiKey(),
             '$user_id' => $event->getUserId(),
@@ -44,6 +44,8 @@ class TransactionTransformer extends AbstractTransformer
             '$session_id' => $event->getSessionId(),
             '$seller_user_id' => $event->getSellerUserId(),
             '$transfer_recipient_user_id' => $event->getTransferRecipientUserId()
-        ]);
+        ];
+
+        return $this->result($event, $data);
     }
 }

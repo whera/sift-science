@@ -3,6 +3,7 @@
 namespace WSW\SiftScience\Events;
 
 use DateTime;
+use stdClass;
 use WSW\SiftScience\TestCase;
 
 /**
@@ -57,5 +58,26 @@ class BaseEventTest extends TestCase
         $this->assertAttributeInstanceOf(DateTime::class, 'time', $event);
         $this->assertInstanceOf(DateTime::class, $event->getTime());
         $this->assertEquals($unix, $event->getTime()->getTimestamp());
+    }
+
+    public function testMethodSetCustomFields()
+    {
+        $event = new CreateOrder();
+        $custom = new stdClass();
+        $custom->test = 'OK';
+
+        $event->setCustomFields($custom);
+        $this->assertAttributeInstanceOf(stdClass::class, 'customFields', $event);
+    }
+
+    public function testMethodGetCustomFields()
+    {
+        $event = new CreateOrder();
+        $custom = new stdClass();
+        $custom->test = 'OK';
+
+        $event->setCustomFields($custom);
+        $this->assertInstanceOf(stdClass::class, $event->getCustomFields());
+        $this->assertEquals('OK', $event->getCustomFields()->test);
     }
 }
